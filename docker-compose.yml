@@ -1,6 +1,14 @@
 services:
   logstash:
-    image: docker.elastic.co/logstash/logstash:8.9.0
-    container_name: logstash
+    image: docker.elastic.co/logstash/logstash:8.17.2
+    container_name: ls
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.2
+    container_name: es
+    ports:
+      - "9200:9200"
+    environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
