@@ -2,6 +2,8 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:8.17.2
     container_name: ls
+    environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
       - ./logstash.yml:/usr/share/logstash/config/logstash.yml:ro
