@@ -31,6 +31,11 @@ services:
       - "5601:5601"
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+    environment:
+      - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=kibana_system
+      - ELASTICSEARCH_PASSWORD=kibana
+      - ELASTICSEARCH_SSL_VERIFICATIONMODE=none
     depends_on:
       elasticsearch:
         condition: service_healthy
