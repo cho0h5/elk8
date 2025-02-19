@@ -24,9 +24,9 @@ services:
       timeout: 10s
       retries: 5
 
-  kb:
+  kibana:
     image: docker.elastic.co/kibana/kibana:8.17.2
-    container_name: kibana
+    container_name: kb
     ports:
       - "5601:5601"
     volumes:
